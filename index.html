@@ -107,6 +107,10 @@
 
   /* ---- 첫 화면 ---- */
   .hero { padding: clamp(28px, 6vw, 64px) 0 clamp(80px, 10vw, 120px); text-align: center; overflow: hidden; }
+  /* 첫 화면 맨 위 서명: 애플 광고식 두 톤 문장(흰 글씨 + 회색 꼬리), 굵고 좁은 자간, 장식 없음 */
+  .maker { margin: 0 auto 30px; max-width: 22em; font-size: clamp(24px, 3.4vw, 40px); font-weight: 800;
+    line-height: 1.22; letter-spacing: -.035em; color: var(--ink); text-wrap: balance; }
+  .maker span { color: var(--sub); font-weight: 700; }
   .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 28px; }
   .tag { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px 7px 8px; border-radius: 999px;
     background: var(--surface); border: 1px solid var(--line); font-size: 14px; text-decoration: none; color: var(--sub); max-width: 100%; }
@@ -192,6 +196,17 @@
   .feature.stack .facts { justify-content: center; }
   .facts span { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); color: var(--sub); font-size: 14px; }
 
+  /* ---- 단축키 한눈에: 왼쪽 키, 오른쪽 하는 일 ---- */
+  .keys { margin: clamp(48px, 6vw, 72px) auto 0; padding: 0; max-width: 920px; border-top: 1px solid var(--line); }
+  .keys li { list-style: none; display: grid; grid-template-columns: minmax(200px, 300px) 1fr; gap: 10px 32px;
+    padding: 26px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .keys .combo { font-size: 19px; color: var(--sub); line-height: 1.9; }
+  .keys .combo kbd { color: var(--ink); }
+  .keys strong { display: block; font-size: 21px; letter-spacing: -.02em; }
+  .keys p { margin: 6px 0 0; color: var(--sub); font-size: 15px; }
+  .keys small { display: block; margin-top: 8px; color: var(--dim); font-size: 14px; }
+  .keys-note { margin: 22px auto 0; max-width: 920px; color: var(--dim); font-size: 14px; }
+
   /* ---- 약속 세 가지 ---- */
   .promises { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 56px); margin-top: clamp(56px, 7vw, 96px); }
   .promises div { border-top: 2px solid var(--accent); padding-top: 22px; }
@@ -245,7 +260,7 @@
     .feature .facts { justify-content: center; }
     .feature .shot { order: 2; }
     .slots { grid-template-columns: repeat(2, 1fr); }
-    .promises, .steps { grid-template-columns: 1fr; }
+    .promises, .steps, .keys li { grid-template-columns: 1fr; }
     .bar nav .opt { display: none; }
   }
   @media (max-width: 560px) {
@@ -283,6 +298,7 @@
     <nav aria-label="주 메뉴">
       <a class="opt" href="#film">영상</a>
       <a class="opt" href="#slots">기능</a>
+      <a class="opt" href="#keys">단축키</a>
       <a class="opt" href="#install">설치</a>
       <a class="opt" href="#update">업데이트</a>
       <a class="get" href="/download">다운로드</a>
@@ -294,6 +310,7 @@
   <!-- 1. 첫 화면: 손짓 하나 + 진짜 메뉴 -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
+      <p class="maker">역사 교사가 <span>직접 제작</span></p>
       <div class="pills">
         <a class="tag" id="news" href="#update" hidden><b id="news-version"></b><span id="news-text"></span></a>
       </div>
@@ -425,6 +442,42 @@
         <h2 class="headline" id="mine-title">메뉴는<br>내 손에 맞게.</h2>
         <p class="lede">쓰지 않는 칸은 빼고, 자주 쓰는 칸은 원하는 자리로. 블랙 · 화이트 테마, 한국어 · English.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- 단축키 한눈에(앱의 실제 기본값·대체 키와 같게: drag_detector.TRIGGERS, capture.HOTKEY_CHOICES) -->
+  <section class="chapter" id="keys" aria-labelledby="keys-title">
+    <div class="wrap">
+      <div class="center reveal">
+        <h2 class="headline" id="keys-title">단축키 한눈에.</h2>
+        <p class="lede">외울 건 세 개뿐이에요. 트레이 아이콘을 우클릭해도 같은 일을 할 수 있어요.</p>
+      </div>
+      <ul class="keys reveal">
+        <li>
+          <span class="combo">파일을 끄는 중 <kbd>Q</kbd></span>
+          <div><strong>변환 메뉴 열기</strong>
+            <p>원하는 칸에 놓으면 변환돼요. 메뉴 밖에 놓으면 평소처럼 옮겨지고요.</p>
+            <small>설정에서 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+드래그 또는 왼쪽 <kbd>Alt</kbd>+드래그로 바꿀 수 있어요.</small></div>
+        </li>
+        <li>
+          <span class="combo"><kbd>Alt</kbd>+<kbd>`</kbd></span>
+          <div><strong>화면 캡처</strong>
+            <p>드래그한 영역이 바로 복사돼요. 붙여 넣거나, 옆에 뜨는 [저장]으로 파일로 남겨요.</p>
+            <small>다른 프로그램이 이 키를 쓰고 있으면 <kbd>Shift</kbd>+<kbd>PrtSc</kbd>로 바뀌어요.</small></div>
+        </li>
+        <li>
+          <span class="combo"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>`</kbd></span>
+          <div><strong>화면 녹화 시작 · 끝</strong>
+            <p>영역을 드래그하거나 클릭해 화면 전체를 녹화해요. 같은 키를 한 번 더 누르면 끝나요.</p>
+            <small>다른 프로그램이 이 키를 쓰고 있으면 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>PrtSc</kbd>로 바뀌어요.</small></div>
+        </li>
+        <li>
+          <span class="combo"><kbd>Esc</kbd></span>
+          <div><strong>취소</strong>
+            <p>변환 메뉴, 캡처·녹화 영역 고르기를 닫아요. 한 번 더 고르는 목록은 <kbd>↑</kbd><kbd>↓</kbd>와 <kbd>Enter</kbd>로도 골라요.</p></div>
+        </li>
+      </ul>
+      <p class="keys-note reveal"><kbd>`</kbd> 키는 키보드 왼쪽 위, 숫자 <kbd>1</kbd> 왼쪽에 있어요. 관리자 권한으로 실행한 창 위에서는 단축키가 듣지 않아요. 이럴 땐 트레이 아이콘을 우클릭하고 [변환 메뉴 열기 (고정)]을 누르세요.</p>
     </div>
   </section>
 

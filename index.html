@@ -232,6 +232,11 @@
   .update li b { color: var(--ink); }
   .edu { margin: 0; padding: 22px 24px; border-radius: 20px; background: var(--stage); border: 1px solid var(--line); color: var(--sub); }
   .edu b { color: var(--ink); }
+  .history { grid-column: 1 / -1; margin: 0; padding: 22px 24px; border-radius: 20px; border: 1px solid var(--line); color: var(--sub); }
+  .history h3 { margin: 0 0 12px; font-size: 17px; color: var(--ink); }
+  .history ul { margin: 0; padding: 0; display: grid; gap: 10px; }
+  .history li { list-style: none; display: grid; grid-template-columns: 64px 1fr; gap: 12px; }
+  .history li b { color: var(--ink); }
 
   /* ---- 마지막 다운로드 ---- */
   .final { text-align: center; padding: clamp(120px, 16vw, 200px) 0; border-top: 1px solid var(--line);
@@ -522,6 +527,15 @@
         </ol>
         <p class="edu" id="edu"><b>EDU_Converter를 쓰고 계셨나요?</b> 그대로 Plopp을 설치하면 돼요. 쓰던 설정은 이어지고, 예전 앱은 자동으로 정리돼요.
           지금 버전은 트레이 아이콘 우클릭 → <b>정보</b>에서 볼 수 있어요.</p>
+        <div class="history" aria-labelledby="history-title">
+          <h3 id="history-title">업데이트 내역</h3>
+          <ul>
+            <li><b>0.4.3</b><span>PDF 보기·편집 창에서 글자를 끌어서 고르고 복사할 수 있어요. Ctrl+C나 오른쪽 클릭으로 복사하고, 두 번 누르면 낱말을 골라요.</span></li>
+            <li><b>0.4.2</b><span>한컴오피스가 있으면 한컴으로 먼저 PDF를 만들어요. 한컴이 없어도 다단·글상자·모아찍기 문서를 한컴과 거의 같게 바꿔요.</span></li>
+            <li><b>0.4.1</b><span>한컴이 있으면 한컴으로 PDF를 만들고, 모아 찍기 문서도 한컴과 같게 변환해요.</span></li>
+            <li><b>0.4.0</b><span>EDU_Converter가 Plopp으로 바뀌었어요. 새 디자인(블랙·화이트), 한국어/English, 변환 메뉴 칸 넣고 빼기·자리 바꾸기, 영상 편집 도움말.</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>

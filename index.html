@@ -235,7 +235,8 @@
   .history { grid-column: 1 / -1; margin: 0; padding: 22px 24px; border-radius: 20px; border: 1px solid var(--line); color: var(--sub); }
   .history h3 { margin: 0 0 12px; font-size: 17px; color: var(--ink); }
   .history ul { margin: 0; padding: 0; display: grid; gap: 10px; }
-  .history li { list-style: none; display: grid; grid-template-columns: 64px 1fr; gap: 12px; }
+  .history li { list-style: none; counter-increment: none; display: grid; grid-template-columns: 64px 1fr; gap: 12px; }
+  .history li::before { content: none; }
   .history li b { color: var(--ink); }
 
   /* ---- 마지막 다운로드 ---- */
@@ -659,7 +660,7 @@
 
   // 최신 릴리스: 맨 위 새 소식과 버전 표시(릴리스만 올리면 페이지를 고치지 않아도 바뀐다)
   // l.latest = 가장 최근 릴리스(사이트 표시용). l.version은 앱 알림용이라 알림을 켠 릴리스만 들어 있다
-  fetch("/api/latest").then((r) => r.ok ? r.json() : null).then((resp) => {
+  fetch("/api/latest?from=site").then((r) => r.ok ? r.json() : null).then((resp) => {
     const l = resp && { ...resp, version: resp.latest || resp.version };
     if (!l || !/^\d+(\.\d+){0,3}$/.test(l.version)) return;
     const set = (id, text) => { document.getElementById(id).textContent = text; };  // textContent: 릴리스 글을 HTML로 넣지 않는다
